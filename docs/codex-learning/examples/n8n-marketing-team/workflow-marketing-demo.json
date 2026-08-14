@@ -1,0 +1,225 @@
+{
+  "name": "Demo segura - Marketing Team IA simulado",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "business",
+              "value": "Tienda de moda en Paraguay"
+            },
+            {
+              "name": "tone",
+              "value": "claro, vendedor y cercano"
+            },
+            {
+              "name": "channels",
+              "value": "Instagram, Facebook"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-business",
+      "name": "Set - Datos del negocio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "weekly_goal",
+              "value": "Aumentar consultas por WhatsApp"
+            },
+            {
+              "name": "content_mix",
+              "value": "3 posts, 2 reels, 3 stories, 2 anuncios borrador"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-goals",
+      "name": "Set - Objetivos marketing",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "ideas",
+              "value": "Reel camisa blanca; Post confianza entregas; Story promo viernes"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-ideas",
+      "name": "Set - Ideas simuladas",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "weekly_calendar",
+              "value": "Lunes post confianza; Miercoles reel producto; Viernes story promocion"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-calendar",
+      "name": "Set - Calendario semanal simulado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "creative_brief",
+              "value": "Reel producto: mostrar 3 combinaciones, CTA a WhatsApp, formato vertical"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-brief",
+      "name": "Set - Brief creativo simulado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "final_report",
+              "value": "Reporte simulado listo para revision humana. No se publico nada ni se gasto presupuesto."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-report",
+      "name": "Set - Reporte final simulado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set - Datos del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Datos del negocio": {
+      "main": [
+        [
+          {
+            "node": "Set - Objetivos marketing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Objetivos marketing": {
+      "main": [
+        [
+          {
+            "node": "Set - Ideas simuladas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Ideas simuladas": {
+      "main": [
+        [
+          {
+            "node": "Set - Calendario semanal simulado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Calendario semanal simulado": {
+      "main": [
+        [
+          {
+            "node": "Set - Brief creativo simulado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Brief creativo simulado": {
+      "main": [
+        [
+          {
+            "node": "Set - Reporte final simulado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "demo-marketing-v1"
+}

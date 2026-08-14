@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "bootstrap": "tsx bootstrap.ts",
+    "check-env": "tsx check-env.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "tsx": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}

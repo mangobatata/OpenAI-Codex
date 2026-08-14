@@ -20,6 +20,8 @@ Avanza en orden. Lee un modulo, ejecuta el mini ejercicio y abre un chat separad
 8. Casos n8n.
 9. Camino de n8n a SaaS.
 10. Seguridad, costos, tokens y uso responsable.
+11. Ejemplos n8n exportables y seguros.
+12. DSA con TypeScript y proyecto final.
 
 ## Regla global de eficiencia
 
@@ -27,7 +29,7 @@ Durante todo el trabajo, usa Codex con bajo consumo de contexto y tokens: tareas
 
 ## Herramientas que vas a aprender
 
-Codex Desktop, ChatGPT Work, Chat normal, terminal integrada, archivos locales, plugins, Skills, MCPs, Computer Use, automatizaciones, Git worktrees, n8n, Google Sheets, Google Calendar y flujos simulados con WhatsApp.
+Codex Desktop, ChatGPT Work, Chat normal, terminal integrada, archivos locales, plugins, Skills, MCPs, Computer Use, automatizaciones, Git worktrees, n8n, workflows exportables de demo, Google Sheets, Google Calendar, flujos simulados con WhatsApp y DSA con TypeScript.
 
 ## Como practicar
 
@@ -37,3 +39,13 @@ Usa proyectos pequenos. Pedi primero inspeccion, luego plan, despues implementac
 
 Usa un chat para estudiar, otro para practicar comandos, otro para documentacion y otro para automatizaciones. En cada chat, deja claro el objetivo, rutas permitidas y criterios de verificacion.
 
+
+## DSA: patrones de resolucion de problemas
+
+30. [Patrones de resolucion de problemas](30-dsa-patrones-resolucion-problemas.md)
+31. [Frequency Counter Pattern](31-dsa-frequency-counter-pattern.md)
+32. [Frequency Counter: Anagram Challenge](32-dsa-frequency-counter-anagram-challenge.md)
+33. [Multiple Pointers Pattern](33-dsa-multiple-pointers-pattern.md)
+34. [Multiple Pointers: Count Unique Values Challenge](34-dsa-multiple-pointers-count-unique-values.md)
+35. [Sliding Window Pattern](35-dsa-sliding-window-pattern.md)
+36. [Divide and Conquer Pattern](36-dsa-divide-and-conquer-pattern.md)

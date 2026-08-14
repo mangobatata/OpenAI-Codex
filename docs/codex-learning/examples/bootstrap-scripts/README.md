@@ -1,28 +1,13 @@
 # Ejemplo bootstrap scripts
 
-## Objetivo
+## Que hace cada script
 
-Preparar un worktree nuevo con pasos repetibles.
+`bootstrap.ts` imprime una secuencia segura de pasos sugeridos para preparar un proyecto. No ejecuta comandos automaticamente.
 
-## Script conceptual
+`check-env.ts` revisa variables de entorno minimas como `DATABASE_URL` y `AUTH_SECRET`.
 
-```ts
-const steps = [
-  "npm install",
-  "cp .env.example .env",
-  "npx prisma generate",
-  "npm run typecheck",
-  "npm test"
-];
+`package.example.json` muestra scripts posibles para adaptar a un proyecto real.
 
-for (const step of steps) {
-  console.log(`Ejecutar: ${step}`);
-}
-```
+## Como adaptarlo
 
-## Buenas practicas
-
-- No sobrescribir `.env` existente.
-- No correr migraciones en produccion.
-- Documentar errores frecuentes.
-
+Cambia variables requeridas, comandos y herramienta de tests segun tu stack. No sobrescribas `.env` existente y no corras migraciones contra produccion.

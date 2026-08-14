@@ -1,22 +1,23 @@
-# Ejemplo n8n Marketing Team
+# Workflow demo n8n: Marketing Team IA
 
-## Objetivo
+## Que ensena
 
-Crear un calendario semanal en borrador para revision humana.
+Este workflow simula un equipo de marketing IA que arma ideas, calendario, brief y reporte final. Es educativo y seguro: no publica, no conecta Meta Ads, no usa Instagram real y no gasta dinero.
 
-## Entrada simulada
+## Como importarlo
 
-```txt
-Nicho: moda femenina en Paraguay
-Objetivo: aumentar consultas por WhatsApp
-Canales: Instagram y Facebook
-```
+1. Importa `workflow-marketing-demo.json` en n8n.
+2. Ejecuta `Manual Trigger`.
+3. Cambia los datos del negocio en el primer nodo `Set`.
 
-## Salida esperada
+## Como modificar nicho, tono y canales
 
-Una tabla con fecha, canal, formato, tema, copy, objetivo, estado y observaciones.
+Edita `business`, `tone` y `channels`. Luego ajusta objetivos y mezcla de contenido.
 
-## Seguridad
+## De demo a produccion
 
-No publicar, no pautar anuncios y no gastar presupuesto sin aprobacion humana.
+Podrias reemplazar nodos simulados por Google Sheets, Google Calendar, Drive, Slack o WhatsApp. Meta Ads e Instagram deben mantenerse con aprobacion humana antes de publicar o gastar.
 
+## Por que revisar campanas pagas
+
+Una automatizacion puede gastar presupuesto, publicar mensajes incorrectos o tomar decisiones con datos incompletos. Al inicio, todo anuncio debe quedar como borrador.

@@ -1,0 +1,333 @@
+{
+  "name": "Demo segura - Agente de turnos simulado",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "whatsapp_message",
+              "value": "Hola, quiero agendar limpieza dental el viernes de tarde."
+            },
+            {
+              "name": "phone",
+              "value": "+595981000000"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-message",
+      "name": "Set - Mensaje WhatsApp simulado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "intent",
+              "value": "agendar"
+            },
+            {
+              "name": "service",
+              "value": "limpieza dental"
+            },
+            {
+              "name": "desired_date",
+              "value": "viernes"
+            },
+            {
+              "name": "desired_time",
+              "value": "tarde"
+            },
+            {
+              "name": "missing_fields",
+              "value": "name"
+            },
+            {
+              "name": "reply_to_customer",
+              "value": "Perfecto, te ayudo a agendar. ¿Me pasas tu nombre?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-ai-json",
+      "name": "Set - IA simulada JSON",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.missing_fields}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "if-missing",
+      "name": "IF - Faltan datos",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "safe_reply",
+              "value": "Perfecto, te ayudo a agendar. ¿Me pasas tu nombre?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-ask-name",
+      "name": "Set - Pedir dato faltante",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "boolean": [
+            {
+              "name": "slot_available",
+              "value": true
+            }
+          ],
+          "string": [
+            {
+              "name": "available_slots",
+              "value": "15:00,16:30,18:00"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-calendar",
+      "name": "Set - Calendar simulado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        880,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.slot_available}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "if-available",
+      "name": "IF - Horario disponible",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "event_simulated",
+              "value": "Evento simulado: limpieza dental viernes 16:30"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-event",
+      "name": "Set - Evento simulado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "sheet_row_simulated",
+              "value": "fecha_registro | nombre demo | +595981000000 | limpieza dental | viernes | 16:30 | confirmado_simulado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-sheet",
+      "name": "Set - Fila Sheets simulada",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "final_reply",
+              "value": "Turno simulado reservado para limpieza dental el viernes a las 16:30. Demo: no se creo ningun evento real."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-final",
+      "name": "Set - Respuesta WhatsApp simulada",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        40
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set - Mensaje WhatsApp simulado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Mensaje WhatsApp simulado": {
+      "main": [
+        [
+          {
+            "node": "Set - IA simulada JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - IA simulada JSON": {
+      "main": [
+        [
+          {
+            "node": "IF - Faltan datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Faltan datos": {
+      "main": [
+        [
+          {
+            "node": "Set - Pedir dato faltante",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set - Calendar simulado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Calendar simulado": {
+      "main": [
+        [
+          {
+            "node": "IF - Horario disponible",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Horario disponible": {
+      "main": [
+        [
+          {
+            "node": "Set - Evento simulado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Evento simulado": {
+      "main": [
+        [
+          {
+            "node": "Set - Fila Sheets simulada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Fila Sheets simulada": {
+      "main": [
+        [
+          {
+            "node": "Set - Respuesta WhatsApp simulada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "demo-turnos-v1"
+}
